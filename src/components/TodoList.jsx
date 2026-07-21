@@ -1,28 +1,54 @@
+import { useState } from "react";
 
-// const TodoList = () => {
-//   return (
-//     <div>
-//       <h1>Todo List</h1>
-//     </div>
-//   )
-// }
+function TodoList({
+  todos,
+  onDelete,
+  onUpdate,
+  editingId,
+  editingText,
+}) {
+  console.log(editingId);
+  const [updateText, setUpdateText] = useState('')
 
-
-function TodoList({ todos, onDelete, onUpdate }) {
   return (
     <ul>
       {todos.map((todo, index) => (
-        <li key={todo.id}>
+        <li key={todo.id} className="flex gap-4">
           <div>{index + 1}</div>
-          <div>{todo.text}</div>
-          <button onClick={() => onUpdate(todo.id)}>Update</button>
-          <button onClick={() => onDelete(todo.id)}>Delete</button>
+          {todo.id === editingId ? (
+            <input
+              value={updateText}
+              onChange={(e) => setUpdateText(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  onUpdate(todo.id, editingText);
+                }
+              }}
+              className="border border-2"
+            />
+          ) : (
+            <div>{todo.text}</div>
+          )}
+          <div>
+            <button
+              type="button"
+              onClick={() => onUpdate(todo.id, updateText)}
+              className="bg-blue-500 text-white px-4 py-1 rounded"
+            >
+              Update
+            </button>
+            <button
+              type="button"
+              onClick={() => onDelete(todo.id)}
+              className="bg-blue-500 text-white px-4 py-1 rounded"
+            >
+              Delete
+            </button>
+          </div>
         </li>
       ))}
     </ul>
-  )
+  );
 }
 
-
-
-export default TodoList
+export default TodoList;
