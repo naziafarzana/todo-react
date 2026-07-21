@@ -2,6 +2,10 @@ import { useState } from "react";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import { v4 as uuidv4 } from "uuid";
+import ProjectList from "./components/ProjectList";
+
+
+
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -23,12 +27,25 @@ const App = () => {
     setTodos(
       todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo)),
     );
-
+    
   };
-
+  
   // const [editingId, setEditingId] = useState(null)
-
+  
   // const [editingText, setEditingText] = useState("")
+  const [project, setProject] = useState([]);
+
+
+  const addProject = (text) => {
+
+  setProject([...project, { id: uuidv4(), name: text }]);
+  };
+  const [selectedProjectId, setSelectedProjectId] = useState(null); 
+
+
+  const handleSelectProject = (id) => {
+    setSelectedProjectId(id);
+  };
 
 
   console.log(todos);
@@ -37,9 +54,12 @@ const App = () => {
 
   return (
     <div>
-      <h1 className="font-bold text-4xl">Todo List</h1>
+    <h1 className="font-bold text-4xl">Todo List</h1>
+
       <TodoInput onAdd={addTodo} />
+
       {/* <TodoList todos={todos} onDelete={deleteTodo} onUpdate={updateTodo} /> */}
+      
       <TodoList
         todos={todos}
         onDelete={deleteTodo}
@@ -48,7 +68,18 @@ const App = () => {
         // editingText={editingText}
         // setEditingId={setEditingId}
         // setEditingText={setEditingText}
+
       />
+    <div flex>
+      </div>
+      
+      <ProjectList 
+       project={project}
+      onAddProject={addProject}
+      onSelectProject={handleSelectProject} 
+      selectedProjectId={selectedProjectId}
+       />
+
     </div>
   );
 };

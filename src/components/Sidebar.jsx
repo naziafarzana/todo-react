@@ -1,3 +1,4 @@
+import ProjectList from "./ProjectList";
 
 
 const Sidebar = () => {
