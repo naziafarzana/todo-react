@@ -1,9 +1,14 @@
+function ProjectList ({projects}) {
 
 
-const ProjectList = () => {
   return (
     <div>
-      
+    {projects.map((project) => (
+        <projects
+        key={project.id}
+        projects={project}
+        />
+      ))}
     </div>
   )
 }
