@@ -1,11 +1,15 @@
 import ProjectList from "./ProjectList";
 
-
-const Sidebar = () => {
+const Sidebar = ({ project, onAddProject, onSelectProject, selectedProjectId }) => {
   return (
-    <div>
-      
-    </div>
+    <aside className="w-64 bg-amber-100 h-screen">
+      <ProjectList
+        project={project}
+        onAddProject={onAddProject}
+        onSelectProject={onSelectProject}
+        selectedProjectId={selectedProjectId}
+      />
+    </aside>
   )
 }
 

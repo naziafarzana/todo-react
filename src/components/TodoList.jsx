@@ -4,6 +4,7 @@ import TodoItem from "./TodoItem";
 
 function TodoList({  todos, onDelete, onUpdate, }) {
   return (
+    // <div className="flex">
     <ul>
       {todos.map((todo, index) => (
         <TodoItem
@@ -15,6 +16,7 @@ function TodoList({  todos, onDelete, onUpdate, }) {
         />
       ))}
     </ul>
+    // </div>
   )
 }
 

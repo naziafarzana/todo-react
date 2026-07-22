@@ -3,7 +3,7 @@ import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import { v4 as uuidv4 } from "uuid";
 import ProjectList from "./components/ProjectList";
-
+import Sidebar from "./components/Sidebar";
 
 
 
@@ -48,12 +48,19 @@ const App = () => {
   };
 
 
-  console.log(todos);
+  // console.log(todos);
 
 
 
   return (
-    <div>
+    <div className="flex">
+      <Sidebar
+        project={project}
+        onAddProject={addProject}
+        onSelectProject={handleSelectProject}
+        selectedProjectId={selectedProjectId}
+      />
+      <div>
     <h1 className="font-bold text-4xl">Todo List</h1>
 
       <TodoInput onAdd={addTodo} />
@@ -69,17 +76,17 @@ const App = () => {
         // setEditingId={setEditingId}
         // setEditingText={setEditingText}
 
-      />
-    <div flex>
-      </div>
-      
+        />
+        </div>
+{/*      
+      <aside className="w-64 bg-amber-100 h-screen">
       <ProjectList 
-       project={project}
+      project={project}
       onAddProject={addProject}
       onSelectProject={handleSelectProject} 
       selectedProjectId={selectedProjectId}
-       />
-
+      />
+      </aside> */}
     </div>
   );
 };
