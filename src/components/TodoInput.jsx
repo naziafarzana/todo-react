@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Button from "../utils/Button";
 // export default function TodoInput() {
 //   return (
 //     <div>
@@ -10,8 +10,10 @@ import { useState } from "react";
 // }
 
 function TodoInput({ onAdd }) {
+
   const [text, setText] = useState("");
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     onAdd(text);
@@ -21,20 +23,34 @@ function TodoInput({ onAdd }) {
     // <button onClick = {handleSubmit}>SubmitBtn</button>
   };
 
+
+
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+
+
+    <form onSubmit={(e) => handleSubmit(e)}
+    className="flex gap-3 mb-6 
+  
+  ">
+
+
       <input
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className="border-black border-2 rounded"
+        className="flex-1 border rounded px-3 py-2"
       />
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-1 rounded"
-      >
-        Submit
-      </button>
+
+
+     <Button
+  type="submit"
+  label="Add Todo"
+  className="bg-green-600 hover:bg-green-700 text-white"
+/>
+
     </form>
   );
 }
+
+
+
 export default TodoInput;

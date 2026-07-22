@@ -2,8 +2,25 @@ import TodoItem from "./TodoItem";
 
 
 
-function TodoList({  todos, onDelete, onUpdate, }) {
+function TodoList({  todos, onDelete, onUpdate, projects, onAssignProject }) {
+  
+  if (todos.length === 0) {
   return (
+     <div className="flex flex-col items-center justify-center py-20 text-gray-500">
+      <div className="text-6xl mb-4">📝</div>
+          <h2 className="text-2xl font-semibold">
+              No Todos Yet
+          </h2>
+
+          <p className="mt-2">
+              Create your first task.
+          </p>
+      </div>
+  )
+}
+  return (
+    
+
     // <div className="flex">
     <ul>
       {todos.map((todo, index) => (
@@ -13,12 +30,16 @@ function TodoList({  todos, onDelete, onUpdate, }) {
           index={index}
           onDelete={onDelete}
           onUpdate={onUpdate}
+          projects={projects}   
+          onAssignProject={onAssignProject}
         />
       ))}
     </ul>
     // </div>
   )
 }
+
+
 
 export default TodoList
 
@@ -91,6 +112,3 @@ export default TodoList
 // }
 
 // export default TodoList;
-
-
-
