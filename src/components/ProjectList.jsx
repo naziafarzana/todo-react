@@ -8,11 +8,12 @@ function ProjectList ({projects, onAddProject, onSelectProject, selectedProjectI
 
   return (
 
-    <div className="space-y-3">
+    <div className="space-y-4">
     {/* <div className = "w-48 h-screen bg-amber-100"> */}
-      
-      <h3 className="font-medium text-2xl text-green-900 mb-5">📁 Projects</h3> 
-   
+     
+      <h3 className="text-3xl font-bold tracking-widest text-red-700 mb-6">
+    PROJECTS
+</h3>
 
 
     <ProjectInput onAdd={onAddProject} />
@@ -21,18 +22,18 @@ function ProjectList ({projects, onAddProject, onSelectProject, selectedProjectI
 
     <div
     onClick={() => onSelectProject(null)}
-    className={`cursor-pointer rounded-lg px-3 py-2 mb-3 transition font-medium ${
-    selectedProjectId === null
-        ? "bg-green-700 text-white"
-        : "hover:bg-green-100"
-}`}
+    className={`cursor-pointer rounded-lg px-3 py-3 mb-3 transition font-semibold border ${
+        selectedProjectId === null
+            ? "bg-red-700 border-red-500 text-white"
+            : "bg-zinc-900 border-red-900 text-zinc-300 hover:bg-red-950 hover:border-red-700 hover:text-white"
+    }`}
 >
-    🏠 All Todos
+    ✠ All Tasks
 </div>
 
 
 {projects.length === 0 && (
-    <p className="text-sm text-gray-500">
+   <p className="text-sm italic text-zinc-500">
         No projects yet.
     </p>
 )}

@@ -5,7 +5,7 @@ const Sidebar = ({ projects, onAddProject, onSelectProject, selectedProjectId })
   
     return (
 
-    <aside className="w-72 bg-green-50 border-r p-6 shadow-sm">
+    <aside className="w-72 min-h-screen bg-black border-r border-red-900 p-6">
 
         
      

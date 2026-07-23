@@ -13,16 +13,28 @@ const App = () => {
   // const [editingText, setEditingText] = useState("");
 
 
-
-  const addTodo = (text, dueDate) => {
+  const addTodo = (text) => {
   
-  const newTodo = { id: uuidv4(),
-     text: text,
+  const newTodo = { 
+      id: uuidv4(),
+      text: text,
       projectId: null,
-      dueDate: dueDate };
-    
-      setTodos([...todos, newTodo]);
+      dueDate: "" ,
   };
+    setTodos([...todos, newTodo]);
+};
+
+
+
+      const updateDueDate = (id, dueDate) => {
+      setTodos(
+        todos.map(todo =>
+          todo.id === id
+            ? { ...todo, dueDate }
+            : todo
+        )
+      );
+    };
 
 
 
@@ -99,7 +111,7 @@ const App = () => {
 
   return (
 
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-zinc-950 text-zinc-100">
 
 
       <Sidebar
@@ -111,18 +123,18 @@ const App = () => {
 
 
 
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-10">
 
 
 
-    <h1 className="text-4xl font-bold">
+    <h1 className="mb-2 text-5xl font-black tracking-wider text-red-700">
   {selectedProjectId === null
     ? "All Todos"
     : projects.find(project => project.id === selectedProjectId)?.name}
 </h1>
 
 
-<p className="text-gray-500 mb-6">
+<p className="mb-8 text-zinc-400">
   {filteredTodos.length} 
   {" "}
   {filteredTodos.length === 1 ? "Task" : "Tasks"}
@@ -145,6 +157,7 @@ const App = () => {
         onUpdate={updateTodo}
         projects={projects}         
         onAssignProject={handleAssignProject}
+        onUpdateDueDate={updateDueDate}
         // editingId={editingId}
         // editingText={editingText}
         // setEditingId={setEditingId}
@@ -168,6 +181,7 @@ const App = () => {
 
   );
 };
+
 
 
 

@@ -2,7 +2,7 @@ import TodoItem from "./TodoItem";
 
 
 
-function TodoList({  todos, onDelete, onUpdate, projects, onAssignProject }) {
+function TodoList({  todos, onDelete, onUpdate, projects, onAssignProject,  onUpdateDueDate }) {
   
   if (todos.length === 0) {
   return (
@@ -32,6 +32,7 @@ function TodoList({  todos, onDelete, onUpdate, projects, onAssignProject }) {
           onUpdate={onUpdate}
           projects={projects}   
           onAssignProject={onAssignProject}
+          onUpdateDueDate={onUpdateDueDate}
         />
       ))}
     </ul>
